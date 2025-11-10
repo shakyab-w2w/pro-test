@@ -3,9 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Pro</title>
+    <title>Mirror Maze</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    Hello World!
+    <div id="app" class="app-shell">
+        <header class="hud hud-top">
+            <div class="hud-left">
+                <h1 id="levelName">Loading…</h1>
+                <p id="piecesInfo">Mirrors: 0 | Splitters: 0</p>
+            </div>
+            <div class="hud-right">
+                <div class="timer">
+                    <span>Time</span>
+                    <strong id="levelTimer">00:00</strong>
+                </div>
+                <div class="hud-buttons">
+                    <button id="restartBtn" aria-keyshortcuts="R">Restart (R)</button>
+                    <button id="undoBtn" aria-keyshortcuts="Z">Undo (Z)</button>
+                    <button id="redoBtn" aria-keyshortcuts="Y">Redo (Y)</button>
+                    <button id="nextBtn" aria-keyshortcuts="N" disabled>Next (N)</button>
+                    <button id="helpBtn" aria-keyshortcuts="F1">Hint Now (F1)</button>
+                </div>
+                <div class="toggles">
+                    <button id="soundToggle" aria-keyshortcuts="M" aria-pressed="false">Sound Off</button>
+                    <button id="contrastToggle" aria-keyshortcuts="C" aria-pressed="false">High Contrast</button>
+                    <button id="motionToggle" aria-keyshortcuts="P" aria-pressed="false">Reduced Motion</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="play-area">
+            <div class="canvas-wrapper">
+                <canvas id="gameCanvas" width="1920" height="1080" role="img" aria-label="Mirror Maze puzzle board"></canvas>
+                <button id="hintBtn" class="hint hidden">Need a hint?</button>
+                <div id="hintGhost" class="hint-ghost hidden" aria-hidden="true"></div>
+            </div>
+        </main>
+
+        <footer class="hud hud-bottom" aria-live="polite">
+            <p>
+                Drag to move pieces • Mouse wheel/Q/E to rotate (Shift to snap) • Arrow keys to nudge (Shift = 10px) •
+                Press R to restart, N for next after victory, H or F1 for instant positional hints.
+            </p>
+        </footer>
+    </div>
+
+    <div id="congratsOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="congratsTitle">
+        <div class="card">
+            <h2 id="congratsTitle">Congratulations!</h2>
+            <p>You solved all 5 Mirror Mazes.</p>
+            <div class="card-actions">
+                <button id="replayLevel5">Replay Level 5</button>
+                <button id="restartAll">Restart from Level 1</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="srLive" class="sr-only" aria-live="polite"></div>
+
+    <script src="game.js" type="module"></script>
 </body>
 </html>

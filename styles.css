@@ -1,0 +1,226 @@
+:root {
+    color-scheme: dark;
+    --bg: #05080f;
+    --fg: #fafbfd;
+    --accent: #4ee0ff;
+    --accent-2: #9c6bff;
+    --danger: #ff5c8d;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(circle at top, #0d1220, var(--bg));
+    color: var(--fg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--fg);
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.app-shell {
+    width: min(1200px, 100vw);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.hud-top {
+    align-items: center;
+}
+
+.hud-left h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.hud-left p {
+    margin: 0.2rem 0 0;
+    opacity: 0.7;
+}
+
+.hud-right {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.timer {
+    text-align: center;
+}
+
+.timer strong {
+    display: block;
+    font-size: 1.4rem;
+}
+
+.hud-buttons,
+.toggles {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.play-area {
+    position: relative;
+}
+
+.canvas-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-width: 960px;
+    min-height: 540px;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: #01030a;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.hud-bottom {
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.hint {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    background: rgba(78, 224, 255, 0.2);
+    border-color: rgba(78, 224, 255, 0.4);
+    backdrop-filter: blur(6px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.overlay .card {
+    width: 320px;
+    height: 320px;
+    border-radius: 16px;
+    border: 3px solid var(--accent);
+    padding: 2rem;
+    text-align: center;
+    background: #080b16;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+}
+
+.card p {
+    margin-bottom: 1.5rem;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#hintGhost {
+    position: absolute;
+    pointer-events: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+body.high-contrast {
+    background: #000;
+    color: #fff;
+}
+
+body.high-contrast .canvas-wrapper {
+    border-color: #fff;
+}
+
+body.reduced-motion * {
+    transition: none !important;
+    box-shadow: none !important;
+}
+
+@media (max-width: 1100px) {
+    .app-shell {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .hud-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hud-right {
+        flex-wrap: wrap;
+    }
+
+    .canvas-wrapper {
+        min-width: auto;
+        min-height: auto;
+    }
+}
