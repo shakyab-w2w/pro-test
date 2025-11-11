@@ -138,7 +138,7 @@ button:active {
   width: 100%;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(251, 191, 36, 0.5);
+  border: none;
   box-shadow: none;
   transform-origin: center;
 }
@@ -164,17 +164,6 @@ button:active {
     linear-gradient(90deg, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
   background-size: calc(100% / 6) calc(100% / 6);
   opacity: 0.25;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.board::after {
-  content: '';
-  position: absolute;
-  inset: 10%;
-  border: 1px solid rgba(249, 115, 22, 0.2);
-  border-radius: 1rem;
-  opacity: 0.5;
   z-index: 1;
   pointer-events: none;
 }
