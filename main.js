@@ -1,7 +1,7 @@
 // [file name]: main.js
 // [file content begin]
-const ROWS = 2;
-const COLS = 2;
+const ROWS = 12;
+const COLS = 12;
 const DEFAULT_SNAP_THRESHOLD = 22;
 const CONNECT_TOLERANCE = 0.4;
 const REVEAL_DELAY_SECONDS = 5;
@@ -545,9 +545,10 @@ function renderPieceCanvas(piece, width, height, tabSize, connectedSides = {}) {
   // Draw clean border on unconnected sides
   ctx.save();
   ctx.lineWidth = 2;
-  ctx.strokeStyle = 'rgba(100, 100, 100, 0.5)'; // Simple gray border
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
+  ctx.strokeStyle = 'rgba(100, 100, 100, 0.8)';
+  ctx.lineCap = 'square';
+  ctx.lineJoin = 'miter';
+  ctx.miterLimit = 10;
   
   // Draw borders only on unconnected edges
   drawSelectiveBorders(ctx, piece, width, height, tabSize, connectedSides);
